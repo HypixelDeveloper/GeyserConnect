@@ -123,6 +123,7 @@ public class UIHandler {
         }
 
         window.button("Add server");
+
         window.button("Back");
 
         return window.build();
