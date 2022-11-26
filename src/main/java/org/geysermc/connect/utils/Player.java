@@ -155,7 +155,7 @@ public class Player {
         startGamePacket.setWorldTemplateOptionLocked(false);
 
         startGamePacket.setLevelId("");
-        startGamePacket.setLevelName("GeyserConnect");
+        startGamePacket.setLevelName("HosConnect Proxy");
         startGamePacket.setPremiumWorldTemplateId("");
         startGamePacket.setCurrentTick(0);
         startGamePacket.setEnchantmentSeed(0);
