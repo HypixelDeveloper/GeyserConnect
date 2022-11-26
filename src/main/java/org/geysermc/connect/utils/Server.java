@@ -85,7 +85,7 @@ public class Server implements RemoteServer {
         if (imageUrl != null && !imageUrl.isEmpty()) {
             return FormImage.of(FormImage.Type.URL, imageUrl);
         } else {
-            return FormImage.of(FormImage.Type.URL, "https://eu.mc-api.net/v3/server/favicon/" + address + ":" + port + ".png?use-fallback-icon=true");
+            return FormImage.of(FormImage.Type.URL, "https://api.minetools.eu/favicon/" + address + "/" + port);
         }
     }
 
