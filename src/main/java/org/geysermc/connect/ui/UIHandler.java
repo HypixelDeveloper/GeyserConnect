@@ -49,9 +49,10 @@ public class UIHandler {
      * @return A {@link SimpleForm} object
      */
     public static Form getMainMenu() {
-        SimpleForm.Builder window = SimpleForm.builder().title("Main Menu");
+        SimpleForm.Builder window = SimpleForm.builder().title("NewConnect Menu");
 
-        window.button("Official Servers");
+        window.button("Bedrock Servers");
+        window.button("Java Servers");
         window.button("Geyser Servers");
 
         // Add a buttons for custom servers
@@ -60,7 +61,7 @@ public class UIHandler {
             window.button("Direct connect");
         }
 
-        window.button("Disconnect");
+        window.button("Quit");
 
         return window.build();
     }
@@ -118,7 +119,7 @@ public class UIHandler {
         // Add a button for each personal server
         for (Server server : servers) {
             window.button(server.toString(), FormImage.of(FormImage.Type.URL,
-                    "https://eu.mc-api.net/v3/server/favicon/" + server.getAddress() + ":" + server.getPort() + ".png"));
+                    "https://api.minetools.eu/favicon/" + server.getAddress() + "/" + server.getPort()));
         }
 
         window.button("Add server");
@@ -166,7 +167,7 @@ public class UIHandler {
     public static Form getRemoveServer(Server server) {
         return SimpleForm.builder()
                 .title("Remove Server")
-                .content("Are you sure you want to remove server: " + server)
+                .content("Are you sure you want to remove" + server)
                 .button("Remove")
                 .button("Cancel")
                 .build();
@@ -211,10 +212,14 @@ public class UIHandler {
     public static void handleMainMenuResponse(Player player, SimpleFormResponse data) {
         switch (data.getClickedButtonId()) {
             case 0:
-                player.setServerCategory(ServerCategory.OFFICIAL);
+                player.setServerCategory(ServerCategory.BEDROCK);
                 break;
 
             case 1:
+                player.setServerCategory(ServerCategory.JAVA);
+                break;
+
+            case 2:
                 player.setServerCategory(ServerCategory.GEYSER);
                 break;
 
@@ -222,10 +227,10 @@ public class UIHandler {
                 // If we have custom servers enabled there are a few extra buttons
                 if (MasterServer.getInstance().getGeyserConnectConfig().getCustomServers().isEnabled()) {
                     switch (data.getClickedButtonId()) {
-                        case 2:
+                        case 3:
                             player.setServerCategory(ServerCategory.CUSTOM);
                             break;
-                        case 3:
+                        case 4:
                             player.sendWindow(FormID.DIRECT_CONNECT, getDirectConnect());
                             return;
 
