@@ -29,7 +29,8 @@ import lombok.Getter;
 
 @Getter
 public enum ServerCategory {
-    OFFICIAL("Official"),
+    OFFICIAL("Bedrock"),
+    JAVA("Java"),
     GEYSER("Geyser"),
     CUSTOM("Custom");
 
